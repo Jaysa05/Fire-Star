@@ -1,13 +1,16 @@
 {
   "spriteId": {
-    "name": "spr_plataforma",
-    "path": "sprites/spr_plataforma/spr_plataforma.yy",
+    "name": "spr_porco",
+    "path": "sprites/spr_porco/spr_porco.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "obj_parente_inimigo",
+    "path": "objects/obj_parente_inimigo/obj_parente_inimigo.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,
@@ -20,10 +23,7 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
@@ -31,7 +31,7 @@
     "path": "folders/Objetos.yy",
   },
   "resourceVersion": "1.0",
-  "name": "obj_plataforma",
+  "name": "obj_porco",
   "tags": [],
   "resourceType": "GMObject",
 }

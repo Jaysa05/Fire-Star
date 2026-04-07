@@ -31,7 +31,8 @@
 		// GRAVIDADE E PULO
 		// -----------------------------
 		// Verifica se o personagem está no chão
-var _chao = place_meeting(x, y + 1, obj_parede) || 
+var _chao = place_meeting(x, y + 1, obj_parede) ||
+			place_meeting(x, y + 1, obj_trampolim)||
 			(place_meeting(x, y + 1, obj_plataforma_cair) && !place_meeting(x, y, obj_plataforma_cair)) ||
 			(place_meeting(x, y + 1, obj_plataforma) && !place_meeting(x, y, obj_plataforma));
 
@@ -78,10 +79,18 @@ if (cima && pulos > 0) {
 		// -----------------------------
 		// COLISÃO VERTICAL COM O CHÃO (obj_parede)
 		// -----------------------------
-		if place_meeting(x, y + vveloc, obj_parede) {
-			while !place_meeting(x , y + sign(vveloc), obj_parede) {
+		// Verifica se, ao se mover verticalmente (y + vveloc),
+		// o objeto vai colidir com uma parede OU com um trampolim
+		if place_meeting(x, y + vveloc, obj_parede) || place_meeting(x, y + vveloc, obj_trampolim) {
+			// Enquanto NÃO houver colisão ao mover apenas 1 pixel na direção do movimento
+			// (sign(vveloc) define se vai subir (-1) ou descer (1))
+			while !place_meeting(x , y + sign(vveloc), obj_parede) && !place_meeting(x, y + sign(vveloc), obj_trampolim) {
+				 // Move o objeto 1 pixel na direção da velocidade vertical
+				// Isso garante que ele pare exatamente antes da colisão
 				y += sign(vveloc);
 			}
+			// Quando encostar no objeto (parede ou trampolim),
+			// zera a velocidade vertical para parar o movimento
 			vveloc = 0;
 		}
 		
