@@ -9,8 +9,10 @@ if (vida <= 0) {
         
         // Ativa o alarm[1] com 20 frames
         // Esse tempo pode ser usado para um efeito visual (ex: flash branco)
-        alarm[1] = 4000; 
+        alarm[1] = 20; 
     }
+	
+	image_speed = 3; // quanto maior, mais rápido
     
     // Executa o código do objeto pai
     // (normalmente usado para lidar com a morte, como virar fumaça ou destruir)
