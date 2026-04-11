@@ -43,3 +43,55 @@ for (var i = 0; i < _vidas; i++){
 	);
 }
 
+// Só executa esse código se estiver na fase 3
+if ( room == rm_fase3){
+	 // Arredonda o tempo para cima (ex: 9.2 vira 10)
+	 var _tempo_arredondado = ceil(tempo_fase);
+	 
+	 // Pega o centro horizontal da tela (GUI)
+	 var _meio_tela = display_get_gui_width()/2;
+	 
+	  // Texto fixo "Tempo: "
+	  var _texto_palavra = "Tempo: ";
+	  
+	  // Converte o número do tempo para texto
+	  var _texto_numero = string(_tempo_arredondado);
+	  
+	  // Mede a largura do texto "Tempo: " e multiplica por 2 (por causa da escala)
+	  var _largura_palavra = string_width(_texto_palavra)* 2;
+	  
+	  // Mede a largura do número e multiplica por 2 (por causa da escala
+	  var _largura_numero = string_width(_texto_numero)*2;
+	  
+	  // Soma as duas larguras para saber o tamanho total da frase
+	  var _largura_total = _largura_palavra + _largura_numero;
+	  
+	  // Calcula onde o texto deve começar para ficar centralizado na tela
+	  var _x_inicial = _meio_tela - (_largura_total);
+	  
+	  // Define o alinhamento do texto para começar da esquerda
+	  draw_set_halign(fa_left);
+	  
+	  // Define a cor branca para desenhar "Tempo: "
+	  draw_set_color(c_white);
+	  
+	  // Desenha o texto "Tempo: " na tela com escala 2x
+	  draw_text_transformed(_x_inicial, 30, _texto_palavra, 2,2, 0)
+	  
+	  // Se o tempo for menor ou igual a 10
+	  if(_tempo_arredondado <= 10){
+		  // Muda a cor para vermelho (alerta)
+		  draw_set_color(c_red);
+	  }else{
+		   // Caso contrário, mantém branco
+		   draw_set_color(c_white);
+	  }
+	  // Desenha o número logo após "Tempo: ", mantendo alinhado
+	  draw_text_transformed(_x_inicial + _largura_palavra, 30, _texto_numero, 2, 2, 0);
+    
+    // Reseta a cor para branco (evita afetar outros desenhos do jogo)
+    draw_set_color(c_white);
+}
+
+
+
