@@ -17,5 +17,5 @@ if (room == rm_fase3){
 	 }
 }else {
 	// Se não for a fase 3, nós garantimos que o tempo resete para 60
-	tempo_fase = 40;
+	tempo_fase = 60;
 }

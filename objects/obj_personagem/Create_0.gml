@@ -26,11 +26,15 @@ if (!variable_global_exists("vida_save")) {
     global.vida_save = 5;
     global.faca_save = 0;
     global.faca_cargas_save = 0;
+	global.frutas_save = 0;
 }
+
 
 vida = global.vida_save; // Pega a vida que estava guardada na global
 faca = global.faca_save;
 faca_cargas = global.faca_cargas_save;
+frutas = global.frutas_save;
+
 
 alfa_hit = 0; 
 // variável usada para controlar o efeito de piscar quando o personagem toma dano

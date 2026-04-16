@@ -43,6 +43,40 @@ for (var i = 0; i < _vidas; i++){
 	);
 }
 
+// === CONTADOR DE FRUTAS ===
+var _x_fruta = 20 + (_sprl + _buffer) * _vidas + 30;
+
+// O centro exato da linha dos corações na tela (nossa linha guia)
+var _centro_guia = 20 + sprite_get_height(spr_vida);
+
+if (sprite_exists(spr_fruta)) {
+
+    // AJUSTE AQUI: Mude este valor até a fruta ficar do mesmo tamanho visual do coração.
+    // Sugestões para testar: 2, 2.5, 3
+    var _escala_fruta = 3; 
+
+    // Calcula Y para centralizar a fruta com os corações
+    var _y_fruta_alinhada = _centro_guia - ((sprite_get_height(spr_fruta) * _escala_fruta) / 2);
+
+    // Desenha a fruta
+    draw_sprite_ext(spr_fruta, 0, _x_fruta, _y_fruta_alinhada, _escala_fruta, _escala_fruta, 0, c_white, 1);
+
+    // Desenha o texto alinhado
+    draw_set_color(c_white);
+    draw_set_halign(fa_left);
+    draw_set_valign(fa_middle);
+
+    draw_text_transformed(
+        _x_fruta + (sprite_get_width(spr_fruta) * _escala_fruta) + 10,
+        _centro_guia,
+        "x" + string(obj_personagem.frutas),
+        2, 2, 0
+    );
+
+    draw_set_valign(fa_top); // reseta
+}
+
+
 // Só executa esse código se estiver na fase 3
 if ( room == rm_fase3){
 	 // Arredonda o tempo para cima (ex: 9.2 vira 10)
