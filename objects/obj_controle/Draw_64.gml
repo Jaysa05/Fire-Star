@@ -44,37 +44,96 @@ for (var i = 0; i < _vidas; i++){
 }
 
 // === CONTADOR DE FRUTAS ===
-var _x_fruta = 20 + (_sprl + _buffer) * _vidas + 30;
+// Calcula a posição horizontal (X) onde a fruta vai aparecer
+// 20 = margem da esquerda
+// (_sprl + _buffer) * _vidas = espaço ocupado pelos corações
+// +30 = espaço extra depois dos corações
+var _x_fruta = 20 + (_sprl + _buffer) *_vidas + 30;
 
-// O centro exato da linha dos corações na tela (nossa linha guia)
+// Cria uma "linha guia" vertical baseada nos corações
+// 20 = margem do topo
+// sprite_get_height(spr_vida) = altura do coração
+// Isso ajuda a alinhar tudo (fruta + texto)
 var _centro_guia = 20 + sprite_get_height(spr_vida);
 
-if (sprite_exists(spr_fruta)) {
+// Verifica se a sprite da fruta existe (evita erro)
+if (sprite_exists(spr_fruta)){
+	// Define o tamanho da fruta (escala)
+    // 1 = normal | 2 = dobro | 3 = triplo
+	var _escala_fruta = 3;
+	
+	// ================= AJUSTES MANUAIS =================
+    // Esses valores servem para "empurrar" a fruta e o texto
+    // sem mexer na lógica principal
 
-    // AJUSTE AQUI: Mude este valor até a fruta ficar do mesmo tamanho visual do coração.
-    // Sugestões para testar: 2, 2.5, 3
-    var _escala_fruta = 3; 
-
-    // Calcula Y para centralizar a fruta com os corações
-    var _y_fruta_alinhada = _centro_guia - ((sprite_get_height(spr_fruta) * _escala_fruta) / 2);
-
-    // Desenha a fruta
-    draw_sprite_ext(spr_fruta, 0, _x_fruta, _y_fruta_alinhada, _escala_fruta, _escala_fruta, 0, c_white, 1);
-
-    // Desenha o texto alinhado
-    draw_set_color(c_white);
-    draw_set_halign(fa_left);
-    draw_set_valign(fa_middle);
-
-    draw_text_transformed(
-        _x_fruta + (sprite_get_width(spr_fruta) * _escala_fruta) + 10,
-        _centro_guia,
-        "x" + string(obj_personagem.frutas),
-        2, 2, 0
-    );
-
-    draw_set_valign(fa_top); // reseta
+    // Ajuste da fruta no eixo X (horizontal)
+    // positivo → direita | negativo → esquerda
+	var _ajuste_fruta_x = 0;
+	
+	// Ajuste da fruta no eixo Y (vertical)
+    // positivo → desce | negativo → sobe
+	var _ajuste_fruta_y = -4;
+	
+	// Ajuste do texto no eixo X
+	var _ajuste_texto_x = 0;
+	
+	// Ajuste do texto no eixo Y
+	var _ajuste_texto_y = 7;
+	
+	// Calcula a posição Y da fruta para deixá-la centralizada
+    // Explicação:
+    // - pega o centro (_centro_guia)
+    // - subtrai metade da altura da fruta (já com escala)
+    // - aplica ajuste manual (_ajuste_fruta_y)
+	var _y_fruta_alinhada = _centro_guia - ((sprite_get_height(spr_fruta) * _escala_fruta) / 2) + _ajuste_fruta_y;
+	
+	// Calcula posição final X da fruta com ajuste manual
+	var _x_final_fruta = _x_fruta + _ajuste_fruta_x;
+	
+	// Desenha a fruta na tela
+    // parâmetros:
+	// sprite, frame, x, y, escalaX, escalaY, rotação, cor, opacidade
+	draw_sprite_ext(spr_fruta, 0 , _x_final_fruta, _y_fruta_alinhada, _escala_fruta, _escala_fruta, 0 , c_white, 1);
+	
+	 // Define a fonte do texto (fonte personalizada do projeto)
+	 draw_set_font(fnt_menu);
+	 
+	 // Alinhamento horizontal do texto (começa da esquerda)
+	 draw_set_halign(fa_left);
+	 
+	 // Alinhamento vertical do texto (centralizado)
+	 draw_set_valign(fa_middle);
+	 
+	 // Desenha o texto da quantidade de frutas
+	 draw_text_transformed(
+	  // Posição X do texto:
+        // começa na fruta +
+        // largura da fruta (já escalada) +
+        // espaço de 10 pixels +
+        // ajuste manual
+		_x_final_fruta + (sprite_get_width(spr_fruta) * _escala_fruta) + 10 + _ajuste_texto_x,
+		// Posição Y do texto:
+        // usa o centro guia +
+        // ajuste manual vertical
+		_centro_guia + _ajuste_texto_y,
+		 // Texto exibido:
+        // "x" + número de frutas do personagem
+		 "x" + string(obj_personagem.frutas),
+		// Escala do texto
+		0.7, 0.7,
+		// Rotação (0 = normal)
+		0
+		);
+		
+		// Reseta alinhamento vertical para padrão (evita bugs em outros textos)
+		draw_set_valign(fa_top);
+		
+		// Reseta a fonte para padrão do GameMaker
+    // Isso é MUITO importante pra não afetar outros desenhos
+	draw_set_font(-1);
+		
 }
+
 
 
 // Só executa esse código se estiver na fase 3

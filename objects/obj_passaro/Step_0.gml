@@ -1,4 +1,5 @@
 /// @description Step do pássaro
+depth = -10;
 // 1. CHECANDO A MORTE COM EXPLOSÃO NATIVA:
 // 1. CHECANDO A MORTE:
 // Verifica se a vida do inimigo chegou a 0 ou menos (morreu)

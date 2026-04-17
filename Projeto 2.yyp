@@ -58,6 +58,7 @@
     {"id":{"name":"obj_espinhos","path":"objects/obj_espinhos/obj_espinhos.yy",},"order":14,},
     {"id":{"name":"obj_caixa_espinhenta","path":"objects/obj_caixa_espinhenta/obj_caixa_espinhenta.yy",},"order":13,},
     {"id":{"name":"spr_planta_atiradora_direita","path":"sprites/spr_planta_atiradora_direita/spr_planta_atiradora_direita.yy",},"order":10,},
+    {"id":{"name":"obj_checkpoint","path":"objects/obj_checkpoint/obj_checkpoint.yy",},"order":32,},
     {"id":{"name":"obj_faca","path":"objects/obj_faca/obj_faca.yy",},"order":12,},
     {"id":{"name":"tr_props","path":"tilesets/tr_props/tr_props.yy",},"order":1,},
     {"id":{"name":"obj_passaro","path":"objects/obj_passaro/obj_passaro.yy",},"order":30,},
@@ -76,6 +77,7 @@
     {"id":{"name":"spr_planta_atiradora","path":"sprites/spr_planta_atiradora/spr_planta_atiradora.yy",},"order":9,},
     {"id":{"name":"obj_personagem","path":"objects/obj_personagem/obj_personagem.yy",},"order":0,},
     {"id":{"name":"obj_parede_inimigo","path":"objects/obj_parede_inimigo/obj_parede_inimigo.yy",},"order":4,},
+    {"id":{"name":"spr_checkpoint","path":"sprites/spr_checkpoint/spr_checkpoint.yy",},"order":21,},
     {"id":{"name":"spr_parede_inimigo","path":"sprites/spr_parede_inimigo/spr_parede_inimigo.yy",},"order":2,},
     {"id":{"name":"rm_gameover","path":"rooms/rm_gameover/rm_gameover.yy",},"order":2,},
     {"id":{"name":"obj_tela_gameover","path":"objects/obj_tela_gameover/obj_tela_gameover.yy",},"order":11,},
@@ -103,9 +105,9 @@
   },
   "RoomOrderNodes": [
     {"roomId":{"name":"rm_menu","path":"rooms/rm_menu/rm_menu.yy",},},
+    {"roomId":{"name":"rm_fase3","path":"rooms/rm_fase3/rm_fase3.yy",},},
     {"roomId":{"name":"rm_fase1","path":"rooms/rm_fase1/rm_fase1.yy",},},
     {"roomId":{"name":"rm_fase2","path":"rooms/rm_fase2/rm_fase2.yy",},},
-    {"roomId":{"name":"rm_fase3","path":"rooms/rm_fase3/rm_fase3.yy",},},
     {"roomId":{"name":"rm_gameover","path":"rooms/rm_gameover/rm_gameover.yy",},},
   ],
   "Folders": [
