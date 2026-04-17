@@ -1,6 +1,33 @@
 /// @description Posicionamento ao entrar na fase
 
-// Detecta se entramos na Fase 3 (tentamos pelo nome ou pelo ID)
+// ---------------------------------------------------
+// CHECKPOINT: Se existe checkpoint ativo nesta sala, spawna lá
+// ---------------------------------------------------
+if (variable_global_exists("checkpoint_ativo") 
+    && global.checkpoint_ativo 
+    && global.checkpoint_sala == room) {
+    
+    x = global.checkpoint_x;
+    y = global.checkpoint_y - 32;
+    
+    vveloc = 0;
+    hveloc = 0;
+    gravidade = 0.2;
+    morreu = false;
+    
+    vida = global.vida_save;
+    faca = global.faca_save;
+    faca_cargas = global.faca_cargas_save;
+    
+    alarm[0] = 60;
+    
+    show_debug_message("Respawn no checkpoint!");
+    exit; // Sai do evento, não executa o spawn padrão abaixo
+}
+
+// ---------------------------------------------------
+// SPAWN PADRÃO (só roda se NÃO há checkpoint ativo)
+// ---------------------------------------------------
 var _nome_sala = room_get_name(room);
 
 if (_nome_sala == "rm_fase3") {

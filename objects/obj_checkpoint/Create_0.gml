@@ -1,2 +1,5 @@
 /// @description Insert description here
-// You can write your code in this editor
+ativado = false;// Ainda não foi ativado pelo jogador
+
+timer_texto = 0;  // Contador para exibir o texto "CheckPoint"
+
