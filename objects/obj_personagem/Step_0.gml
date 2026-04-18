@@ -34,5 +34,18 @@ depth = -bbox_bottom; //Quanto mais embaixo o personagem estiver na tela, mais n
 	//Se a vida chegar a 0
 if (vida <= 0 && !morreu) {
     morreu = true;
+    
+    // Se houver um checkpoint ativo, resetamos os dados para o renascimento
+    if (variable_global_exists("checkpoint_ativo")) {
+        global.vida_save = 5;
+        global.faca_save = 0;
+        global.faca_cargas_save = 0;
+        global.frutas_save = 0;
+    }
+    
+    vida = global.vida_save;
+    faca = global.faca_save;
+    faca_cargas = global.faca_cargas_save;
+    frutas = global.frutas_save;
     room_goto(rm_gameover);
 }

@@ -15,9 +15,16 @@ if (variable_global_exists("checkpoint_ativo")
     gravidade = 0.2;
     morreu = false;
     
+    // --- RESET DE STATUS AO VOLTAR PARA O CHECKPOINT ---
+    global.vida_save = 5;          // Vida cheia
+    global.faca_save = 0;          // Sem facas
+    global.faca_cargas_save = 0;   // Sem cargas
+    global.frutas_save = 0;        // Sem frutas
+    
     vida = global.vida_save;
     faca = global.faca_save;
     faca_cargas = global.faca_cargas_save;
+    frutas = global.frutas_save;
     
     alarm[0] = 60;
     
